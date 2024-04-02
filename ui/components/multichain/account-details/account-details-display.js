@@ -9,42 +9,42 @@ import { setAccountLabel } from '../../../store/actions';
 import {
   getCurrentChainId,
   getHardwareWalletType,
-  getInternalAccountByAddress,
+  // getInternalAccountByAddress,
 } from '../../../selectors';
-import { isAbleToExportAccount } from '../../../helpers/utils/util';
+// import { isAbleToExportAccount } from '../../../helpers/utils/util';
 import {
   Box,
-  ButtonSecondary,
-  ButtonSecondarySize,
+  // ButtonSecondary,
+  // ButtonSecondarySize,
 } from '../../component-library';
 import {
   AlignItems,
   Display,
   FlexDirection,
-  TextVariant,
+  // TextVariant,
 } from '../../../helpers/constants/design-system';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import {
   MetaMetricsEventCategory,
-  MetaMetricsEventKeyType,
+  // MetaMetricsEventKeyType,
   MetaMetricsEventName,
 } from '../../../../shared/constants/metametrics';
-import { useI18nContext } from '../../../hooks/useI18nContext';
+// import { useI18nContext } from '../../../hooks/useI18nContext';
 
 export const AccountDetailsDisplay = ({
   accounts,
   accountName,
   address,
-  onExportClick,
+  // onExportClick,
 }) => {
   const dispatch = useDispatch();
   const trackEvent = useContext(MetaMetricsContext);
-  const t = useI18nContext();
+  // const t = useI18nContext();
 
-  const {
-    metadata: { keyring },
-  } = useSelector((state) => getInternalAccountByAddress(state, address));
-  const exportPrivateKeyFeatureEnabled = isAbleToExportAccount(keyring?.type);
+  // const {
+  //   metadata: { keyring },
+  // } = useSelector((state) => getInternalAccountByAddress(state, address));
+  // const exportPrivateKeyFeatureEnabled = isAbleToExportAccount(keyring?.type);
 
   const chainId = useSelector(getCurrentChainId);
   const deviceName = useSelector(getHardwareWalletType);
@@ -72,7 +72,7 @@ export const AccountDetailsDisplay = ({
         accounts={accounts}
       />
       <QrCodeView Qr={{ data: address }} />
-      {exportPrivateKeyFeatureEnabled ? (
+      {/* {exportPrivateKeyFeatureEnabled ? (
         <ButtonSecondary
           block
           size={ButtonSecondarySize.Lg}
@@ -91,7 +91,7 @@ export const AccountDetailsDisplay = ({
         >
           {t('showPrivateKey')}
         </ButtonSecondary>
-      ) : null}
+      ) : null} */}
     </Box>
   );
 };
@@ -112,5 +112,5 @@ AccountDetailsDisplay.propTypes = {
   /**
    * Executes upon Export button click
    */
-  onExportClick: PropTypes.func.isRequired,
+  // onExportClick: PropTypes.func.isRequired,
 };
